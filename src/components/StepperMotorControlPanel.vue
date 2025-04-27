@@ -31,7 +31,13 @@
         </div>
       </div>
       <div class="row p-3">
-        <b-button class="m-3" v-on:click="moveToHomeBegin()" disabled>
+        <b-button class="m-3" v-on:click="enable">
+          <font-awesome-icon icon="power-off"></font-awesome-icon>
+        </b-button>                
+        <b-button class="m-3" v-on:click="sync">
+          <font-awesome-icon icon="arrow-down"></font-awesome-icon>
+        </b-button>        
+        <b-button class="m-3" v-on:click="moveToHomeBegin" disabled>
           <font-awesome-icon icon="fast-backward"></font-awesome-icon>
         </b-button>
         <b-button variant="success" class="m-3" v-on:click="moveBack">
@@ -43,7 +49,7 @@
         <b-button variant="success" class="m-3" v-on:click="moveForward">
           <font-awesome-icon icon="forward"></font-awesome-icon>
         </b-button>
-        <b-button class="m-3" v-on:click="moveToHomeEnd()" disabled>
+        <b-button class="m-3" v-on:click="moveToHomeEnd" disabled>
           <font-awesome-icon icon="fast-forward"></font-awesome-icon>
         </b-button>
       </div>
@@ -101,6 +107,12 @@ export default {
     BButton,
   },
   methods: {
+    sync() {
+      console.log("sync"); //TODO
+    },
+    enable() {
+      console.log("enable"); //TODO
+    },    
     stop() {
       apiService.stopStepper(this.stepperConfiguration.id).then((data) => {
         //do something

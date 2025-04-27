@@ -15,6 +15,8 @@ import './ext/shards-dashboards.1.1.0.css'
 // FONT AWESOME
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+    faPowerOff,
+    faArrowDown,
     faCogs,
     faGamepad,
     faInfoCircle,
@@ -37,7 +39,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add([faCogs, faGamepad, faInfoCircle, faTachometerAlt, faBars, faTimes, faPlusCircle, faTrash, faPen, faStop, faForward, faFastForward, faBackward, faFastBackward, faDotCircle, faFile, faSave, faFileDownload, faPlay])
+library.add([faPowerOff,faArrowDown,faCogs, faGamepad, faInfoCircle, faTachometerAlt, faBars, faTimes, faPlusCircle, faTrash, faPen, faStop, faForward, faFastForward, faBackward, faFastBackward, faDotCircle, faFile, faSave, faFileDownload, faPlay])
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // toastr

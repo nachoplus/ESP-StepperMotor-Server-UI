@@ -32,11 +32,12 @@ export class ApiService {
         return axios.get(url).then(response => response.data);
     }
 
-    addStepperMotor(stepPin, dirPin, stepsPerRev, stepsPerMM, microsteppingDivisor, displayName, brakePin, brakePinActiveState, brakeEngageDelayMs, brakeReleaseDelayMs) {
+    addStepperMotor(stepPin, dirPin, enablePin,stepsPerRev, stepsPerMM, microsteppingDivisor, displayName, brakePin, brakePinActiveState, brakeEngageDelayMs, brakeReleaseDelayMs) {
         const url = `${API_URL}/api/steppers`;
         var params = {
             stepPin: stepPin,
             dirPin: dirPin,
+            enablePin: enablePin,
             name: displayName,
             stepsPerRev: parseInt(stepsPerRev, 10),
             stepsPerMM: parseInt(stepsPerMM, 10),
@@ -49,11 +50,12 @@ export class ApiService {
         return axios.post(url, params).then(response => response.data);
     }
 
-    updateStepperMotor(id, stepPin, dirPin, stepsPerRev, stepsPerMM, microsteppingDivisor, displayName, brakePin, brakePinActiveState, brakeEngageDelayMs, brakeReleaseDelayMs) {
+    updateStepperMotor(id, stepPin, dirPin, enablePin,stepsPerRev, stepsPerMM, microsteppingDivisor, displayName, brakePin, brakePinActiveState, brakeEngageDelayMs, brakeReleaseDelayMs) {
         const url = `${API_URL}/api/steppers?id=${id}`;
         var params = {
             stepPin: stepPin,
             dirPin: dirPin,
+            enablePin: enablePin,
             name: displayName,
             stepsPerRev: parseInt(stepsPerRev),
             stepsPerMM: parseInt(stepsPerMM),

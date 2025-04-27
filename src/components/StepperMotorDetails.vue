@@ -16,7 +16,9 @@
                     <strong>{{stepperConfiguration.name}}</strong><br/>
                     {{stepperConfiguration.id}}<br/>
 
-                    Step-Pin: {{stepperConfiguration.stepPin}} / Dir-Pin: {{stepperConfiguration.dirPin}} <span v-if="stepperConfiguration.brakePin != 255"> / Brake-Pin: {{stepperConfiguration.brakePin}}</span><br/>
+                    Step-Pin: {{stepperConfiguration.stepPin}} / Dir-Pin: {{stepperConfiguration.dirPin}}
+                    <span v-if="stepperConfiguration.enablePin !=-2"> / ENABLE-Pin: {{stepperConfiguration.enablePin}}</span><br/>
+                    <span v-if="stepperConfiguration.brakePin != 255"> / Brake-Pin: {{stepperConfiguration.brakePin}}</span><br/>
                     <span v-if="stepperConfiguration.brakePin != 255">engage delay: {{(stepperConfiguration.brakeEngageDelayMs == 0)? 'disabled': stepperConfiguration.brakeEngageDelayMs + ' ms'}} / release delay: {{(stepperConfiguration.brakeReleaseDelayMs == -1)? 'disabled': stepperConfiguration.brakeReleaseDelayMs + ' ms'}}<br/></span>
                     Steps/mm: {{stepperConfiguration.stepsPerMM}} / Steps/revolution: {{stepperConfiguration.stepsPerRev}}<br/>
                     Microstepping: {{stepperConfiguration.microsteppingDivisor}}

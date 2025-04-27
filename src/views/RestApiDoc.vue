@@ -211,7 +211,15 @@ export default {
               desc:
                 "the IO pin number of the ESP to use for sending the direction signal to the stepper driver",
               allowedValues: []
-            }
+            },
+            {
+              name: "enablePin",
+              type: "int",
+              optional: true,
+              desc:
+                "the IO pin number of the ESP to use for sending the ENABLE signal to the stepper driver",
+              allowedValues: []
+            }            
           ],
           output: ""
         },
@@ -251,7 +259,15 @@ export default {
               desc:
                 "the IO pin number of the ESP to use for sending the direction signal to the stepper driver",
               allowedValues: []
-            }
+            },
+            {
+              name: "enablePin",
+              type: "int",
+              optional: true,
+              desc:
+                "the IO pin number of the ESP to use for sending the ENABLE signal to the stepper driver",
+              allowedValues: []
+            }            
           ],
           output: ""
         },

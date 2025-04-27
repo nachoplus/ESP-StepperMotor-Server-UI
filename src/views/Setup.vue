@@ -93,6 +93,21 @@
               </small>
             </div>
             <div class="form-group">
+              <label for="enablePin">ESP IO pin for ENABLE signal</label>
+              <select id="enablePin" name="enablePin" class="form-control" v-model="stepperToAdd.enablePin">
+                <option value="-2" selected>not connected / enable pin is not used</option>
+                <option
+                  v-for="ioPin in allowedIoOutputPins"
+                  :value="ioPin.pin"
+                  v-bind:key="'enablePin'+(ioPin.pin)"
+                >{{ioPin.label}} {{ioPin.connectedDeviceNames}}</option>
+              </select>
+              <small id="enablePinHelp" class="form-text text-muted">
+                select the IO pin of the ESP that is
+                connected to the ENABLE-pin on the stepper driver board
+              </small>
+            </div>            
+            <div class="form-group">
               <label for="brakePin">ESP IO pin for motor brake (optional)</label>
               <select
                 id="brakePin"
@@ -533,6 +548,7 @@ export default {
       stepperToAdd: {
         stepPin: -1,
         dirPin: -1,
+        enablePin: -2,
         stepPerMM: 100,
         stepPerRev: 200,
         name: "",
@@ -771,6 +787,12 @@ export default {
                 value.name + " direction-pin"
               );
             }
+            if (value.enablePin >= 0) {
+              this.setPinUsedByInfo(
+                value.enablePin,
+                value.name + " enable-pin"
+              );
+            }
             console.log(value);
           });
         }
@@ -833,6 +855,7 @@ export default {
       this.stepperToAdd.id = "";
       this.stepperToAdd.stepPin = -1;
       this.stepperToAdd.dirPin = -1;
+      this.stepperToAdd.enablePin = -2;
       this.stepperToAdd.stepsPerMM = 100;
       this.stepperToAdd.stepsPerRev = 200;
       this.stepperToAdd.microsteppingDivisor = 1;
@@ -859,6 +882,7 @@ export default {
               this.stepperToAdd.id,
               this.stepperToAdd.stepPin,
               this.stepperToAdd.dirPin,
+              this.stepperToAdd.enablePin,
               this.stepperToAdd.stepsPerRev,
               this.stepperToAdd.stepsPerMM,
               this.stepperToAdd.microsteppingDivisor,
@@ -886,6 +910,7 @@ export default {
             .addStepperMotor(
               this.stepperToAdd.stepPin,
               this.stepperToAdd.dirPin,
+              this.stepperToAdd.enablePin,
               this.stepperToAdd.stepsPerRev,
               this.stepperToAdd.stepsPerMM,
               this.stepperToAdd.microsteppingDivisor,
@@ -1099,6 +1124,7 @@ export default {
       this.$refs["addStepperModal"].show();
       this.stepperToAdd.stepPin = stepperConfigToEdit.stepPin;
       this.stepperToAdd.dirPin = stepperConfigToEdit.dirPin;
+      this.stepperToAdd.enablePin = stepperConfigToEdit.enablePin;
       this.stepperToAdd.stepsPerRev = stepperConfigToEdit.stepsPerRev;
       this.stepperToAdd.stepsPerMM = stepperConfigToEdit.stepsPerMM;
       this.stepperToAdd.microsteppingDivisor = stepperConfigToEdit.microsteppingDivisor;

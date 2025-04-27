@@ -9,6 +9,7 @@
       "name": "X-Axis",
       "stepPin": 16,
       "dirPin": 16,
+      "enablePin": 16,
       "position": {
         "mm": 0,
         "revs": 0,
@@ -27,6 +28,7 @@
       "name": "Y-Axis",
       "stepPin": 13,
       "dirPin": 14,
+      "enablePin": 12,      
       "position": {
         "mm": 0,
         "revs": 0,
